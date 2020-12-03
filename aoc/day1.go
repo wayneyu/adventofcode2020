@@ -6,29 +6,17 @@ import (
     "bufio"
     "os"
     "sort"
+    "common"
 )
 
-func check(e error) {
-	if e != nil {
-		panic(e)
-	}
-}
 
 func main() {
-    input_path := "./input/day1"
-    file, err := os.Open(input_path)
-    check(err)
-    defer file.Close()
-
-    scanner := bufio.NewScanner(file)
-
     // Read numbers from input file
     nums := make([]int, 0)
-    for scanner.Scan() {
-        v, err := strconv.Atoi(scanner.Text())
-        check(err)
+    lines := common.read_input("./input/day1￿")
 
-        nums = append(nums, v)
+    for _, s := range lines {
+        nums = append(nums, strconv.Atoi(s))
     }
 
     // Part 1
